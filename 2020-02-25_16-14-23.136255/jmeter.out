@@ -1,0 +1,8 @@
+Created the tree successfully using /Users/ymaksymchuk/source/LoadTests/JmeterDB_Example/modified_postgresql_project_example.jmx
+Starting the test @ Tue Feb 25 16:15:30 EET 2020 (1582640130367)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+Generate Summary Results +      1 in 00:00:00 =   21.3/s Avg:    10 Min:    10 Max:    10 Err:     1 (100.00%) Active: 1 Started: 1 Finished: 0
+Generate Summary Results +      1 in 00:00:00 =   90.9/s Avg:     0 Min:     0 Max:     0 Err:     0 (0.00%) Active: 0 Started: 1 Finished: 1
+Generate Summary Results =      2 in 00:00:00 =   34.5/s Avg:     5 Min:     0 Max:    10 Err:     1 (50.00%)
+Tidying up ...    @ Tue Feb 25 16:15:30 EET 2020 (1582640130769)
+... end of run

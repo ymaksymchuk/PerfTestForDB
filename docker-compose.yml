@@ -1,0 +1,24 @@
+version: "3.6"
+
+services:
+  db:
+    build:
+      context: docker-db/
+      dockerfile: Dockerfile
+    container_name: jdbc-m
+    ports:
+      - 3306:3306
+      - 4444:4444
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=jmeter_demo
+      - DATABASE_PORT=3306
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=jmeter_demo
+    healthcheck:
+      test: ["CMD-SHELL", 'mysqladmin ping']
+      interval: 10s
+      timeout: 2s
+      retries: 10

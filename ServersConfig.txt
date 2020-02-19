@@ -1,0 +1,14 @@
+MS_SQL:
+HOST: 10.10.0.12
+PORT: ?
+DATABASE: cmnbs_qa2
+USER: cmnbs
+PASSWORD: Welc0me!
+
+
+PG_SQL:
+DATABASE cmnbs;
+USER cmnbs_usr
+PASSWORD 'Welc0me!';
+HOST: 10.10.0.35
+PORT: 15432
