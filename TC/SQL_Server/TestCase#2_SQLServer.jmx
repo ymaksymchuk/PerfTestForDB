@@ -16,15 +16,15 @@
         <stringProp name="checkQuery"></stringProp>
         <stringProp name="connectionAge">5000</stringProp>
         <stringProp name="dataSource">aid</stringProp>
-        <stringProp name="dbUrl">jdbc:postgresql://10.10.0.35:15432/cmnbs</stringProp>
-        <stringProp name="driver">org.postgresql.Driver</stringProp>
+        <stringProp name="dbUrl">jdbc:sqlserver://10.10.0.14:1433/cmnbs_qa2</stringProp>
+        <stringProp name="driver">com.microsoft.sqlserver.jdbc.SQLServerDriver</stringProp>
         <boolProp name="keepAlive">true</boolProp>
         <stringProp name="password">Welc0me!</stringProp>
         <stringProp name="poolMax">0</stringProp>
         <stringProp name="timeout">10000</stringProp>
-        <stringProp name="transactionIsolation">DEFAULT</stringProp>
+        <stringProp name="transactionIsolation">TRANSACTION_SERIALIZABLE</stringProp>
         <stringProp name="trimInterval">60000</stringProp>
-        <stringProp name="username">cmnbs_usr</stringProp>
+        <stringProp name="username">cmnbs</stringProp>
         <boolProp name="preinit">false</boolProp>
         <stringProp name="initQuery"></stringProp>
         <stringProp name="connectionProperties"></stringProp>
@@ -46,17 +46,12 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Update Statment" enabled="true">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Select Statment" enabled="true">
           <stringProp name="dataSource">aid</stringProp>
-          <stringProp name="query">do $$
-	declare p_abalance int;
-begin
-	SELECT abalance into p_abalance FROM pgbench_accounts WHERE aid = ${p_aid};
-end;
-$$ language plpgsql;</stringProp>
+          <stringProp name="query">SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = ${aid};</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
-          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="queryType">Prepared Select Statement</stringProp>
           <stringProp name="resultVariable">result</stringProp>
           <stringProp name="variableNames">aid</stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -69,17 +64,29 @@ $$ language plpgsql;</stringProp>
             <stringProp name="parameters"></stringProp>
             <boolProp name="resetInterpreter">false</boolProp>
             <stringProp name="script">vars.put(&quot;p_aid&quot;,&quot;&quot;+${__Random(1,100000000)});
-log.info(&quot;p_aid is : &quot;+vars.get(&quot;p_aid&quot;));</stringProp>
+</stringProp>
           </BeanShellPreProcessor>
           <hashTree/>
           <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
             <stringProp name="filename"></stringProp>
             <stringProp name="parameters"></stringProp>
             <boolProp name="resetInterpreter">false</boolProp>
-            <stringProp name="script">log.info(&quot;SELECT abalance into p_abalance FROM pgbench_accounts WHERE aid = &quot;+vars.get(&quot;p_aid&quot;)+&quot;;&quot;);</stringProp>
+            <stringProp name="script">log.info(&quot;SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = &quot;+vars.get(&quot;p_aid&quot;)+&quot;&quot;);</stringProp>
           </BeanShellPostProcessor>
           <hashTree/>
         </hashTree>
+        <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+          <collectionProp name="Asserion.test_strings">
+            <stringProp name="49586">200</stringProp>
+          </collectionProp>
+          <stringProp name="Assertion.custom_message"></stringProp>
+          <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+          <boolProp name="Assertion.assume_success">false</boolProp>
+          <intProp name="Assertion.test_type">8</intProp>
+          <stringProp name="Assertion.scope">all</stringProp>
+          <stringProp name="Scope.variable">Result</stringProp>
+        </ResponseAssertion>
+        <hashTree/>
         <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>

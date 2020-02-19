@@ -1,5 +1,5 @@
 MS_SQL:
-HOST: 10.10.0.12
+HOST: 10.10.0.14
 PORT: ?
 DATABASE: cmnbs_qa2
 USER: cmnbs
