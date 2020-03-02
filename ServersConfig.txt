@@ -1,9 +1,10 @@
 MS_SQL:
 HOST: 10.10.0.14
-PORT: ?
+PORT: 1433
 DATABASE: cmnbs_qa2
 USER: cmnbs
 PASSWORD: Welc0me!
+jdbc:sqlserver://10.10.0.14:1433;databaseName=cmnbs_qa2;user=cmnbs;password=Welc0me!
 
 
 PG_SQL:
