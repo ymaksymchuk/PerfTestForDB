@@ -1,0 +1,2 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1583233760095,880,MS_SQL_TestCase#1,200,OK,Thread Group 1-1,text,true,12,0,1,1,null,880,0,827

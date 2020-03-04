@@ -41,6 +41,7 @@
     </Root>
 
     <Logger name="org.apache.jmeter.junit" level="debug" />
+    <Logger name="org.apache.jmeter.protocol.jdbc" level="debug" />
     <!--
     <Logger name="org.apache.jmeter.control" level="debug" />
     <Logger name="org.apache.jmeter.testbeans" level="debug" />
@@ -55,7 +56,7 @@
     <!--
     <Logger name="org.apache.jmeter.protocol.http.control" level="debug" />
     <Logger name="org.apache.jmeter.protocol.ftp" level="warn" />
-    <Logger name="org.apache.jmeter.protocol.jdbc" level="debug" />
+
     <Logger name="org.apache.jmeter.protocol.java" level="warn" />
     <Logger name="org.apache.jmeter.testelements.property" level="debug" />
     -->

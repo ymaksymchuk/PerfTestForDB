@@ -13,3 +13,15 @@ USER cmnbs_usr
 PASSWORD 'Welc0me!';
 HOST: 10.10.0.35
 PORT: 15432
+
+-Jhost
+-Jport
+-Juser
+-Jpswd
+-Jramp_up
+-Jusers_count
+-Jloops
+-Jusers_count_1
+Jusers_count_2
+Jusers_count_3
+Jusers_count_4
