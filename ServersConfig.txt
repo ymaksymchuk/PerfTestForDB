@@ -21,7 +21,18 @@ PORT: 15432
 -Jramp_up
 -Jusers_count
 -Jloops
+
+#For Test Case 4
 -Jusers_count_1
-Jusers_count_2
-Jusers_count_3
-Jusers_count_4
+-Jusers_count_2
+-Jusers_count_3
+-Jusers_count_4
+
+#
+> show databases
+name: databases
+name
+----
+_internal
+jmeter_postgres
+jmeter_mssql_server
