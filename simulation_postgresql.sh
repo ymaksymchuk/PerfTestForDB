@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
-
+# TODO: Distributed mode
 TEST_CASE_NUMBER=$1;
 USERS_COUNT=$2;
 RAMP_UP=$3;
 LOOPS=$4;
+
+# Next params needed only for a TestCase#5
 USERS_COUNT_1=$5;
 USERS_COUNT_2=$6;
 USERS_COUNT_3=$7;

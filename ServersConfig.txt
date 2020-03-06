@@ -36,3 +36,9 @@ name
 _internal
 jmeter_postgres
 jmeter_mssql_server
+
+Destributed mode!!
+SQL Transaction per second from the DB engine(DBMon add)
+Connection per second
+
+compare Postgre SQL vs MS SQL server reports DONE
