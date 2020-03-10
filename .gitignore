@@ -2,4 +2,6 @@
 *.iml
 *.log
 jmeter/backups/*
-*.java
+*.zip
+jmeter_reports/*
+jmeter_test_result/*

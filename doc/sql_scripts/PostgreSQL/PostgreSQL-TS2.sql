@@ -5,10 +5,10 @@
   
 
 do $$
-	declare p_aid int := round(random()*100000000); 
-	declare p_bid int := round(random()*1000); 
-	declare p_tid int := round(random()*10000); 
-	declare p_delta int := round(random()*10000)-5000; 
+	declare p_aid int := ceil(random()*100000000);
+	declare p_bid int := ceil(random()*1000);
+	declare p_tid int := ceil(random()*10000);
+	declare p_delta int := ceil(random()*10000)-5000;
 	declare p_abalance int;
 begin
 	-- body

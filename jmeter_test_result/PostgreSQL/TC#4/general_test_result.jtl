@@ -1,2 +1,0 @@
-timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1583354741044,1507,PostgreSQL_TesCase#4,200,OK,Thread Group 1-1,text,true,11,0,1,1,null,1507,0,478
