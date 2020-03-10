@@ -42,3 +42,6 @@ SQL Transaction per second from the DB engine(DBMon add)
 Connection per second
 
 compare Postgre SQL vs MS SQL server reports DONE
+
+
+scp rmi_keystore.jks ymaksymchuk@10.10.0.205:/home/ymaksymchuk/src/PerfTestForDB/jmeter/bin

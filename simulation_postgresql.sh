@@ -69,4 +69,4 @@ java -jar ./jmeter/bin/ApacheJMeter.jar \
 -Jusers_count_2=$USERS_COUNT_2 \
 -Jusers_count_3=$USERS_COUNT_3 \
 -Jusers_count_4=$USERS_COUNT_4 \
--n -f -t $TEST_CASE -l $TEST_CASE_RESULT -e -o $TEST_CASE_REPORT
+-n -r -f -t $TEST_CASE -l $TEST_CASE_RESULT -e -o $TEST_CASE_REPORT
