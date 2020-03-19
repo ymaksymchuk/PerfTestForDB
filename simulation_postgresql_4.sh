@@ -20,40 +20,35 @@ case $TEST_CASE_NUMBER in
     TEST_CASE=./jmeter_test_cases/PostgreSQL/TestCase#1_Postgre.jmx
     TEST_CASE_RESULT=./jmeter_test_result/PostgreSQL/Simulation#4/TC#1/general_test_result.jtl
     TEST_CASE_REPORT=./jmeter_reports/PostgreSQL/Simulation#4/TC#1/
-    GRAF_FILE=./jmeter_test_result/PostgreSQL/Simulation#4/TC#1/general_test_result.jtl
-    GRAF_FOLDER=./jmeter_test_result/PostgreSQL/Simulation#4/TC#1/
+    RESULT_FOLDER=./jmeter_test_result/PostgreSQL/Simulation#4/TC#1/
     ;;
 
   2)
     TEST_CASE=./jmeter_test_cases/PostgreSQL/TestCase#2_Postgre.jmx
     TEST_CASE_RESULT=./jmeter_test_result/PostgreSQL/Simulation#4/TC#2/general_test_result.jtl
     TEST_CASE_REPORT=./jmeter_reports/PostgreSQL/Simulation#4/TC#2/
-    GRAF_FILE=./jmeter_test_result/PostgreSQL/Simulation#4/TC#2/general_test_result.jtl
-    GRAF_FOLDER=./jmeter_test_result/PostgreSQL/Simulation#4/TC#2/
+    RESULT_FOLDER=./jmeter_test_result/PostgreSQL/Simulation#4/TC#2/
     ;;
 
   3)
     TEST_CASE=./jmeter_test_cases/PostgreSQL/TestCase#3_Postgre.jmx
     TEST_CASE_RESULT=./jmeter_test_result/PostgreSQL/Simulation#4/TC#3/general_test_result.jtl
     TEST_CASE_REPORT=./jmeter_reports/PostgreSQL/Simulation#4/TC#3/
-    GRAF_FILE=./jmeter_test_result/PostgreSQL/Simulation#4/TC#3/general_test_result.jtl
-    GRAF_FOLDER=./jmeter_test_result/PostgreSQL/Simulation#4/TC#3/
+    RESULT_FOLDER=./jmeter_test_result/PostgreSQL/Simulation#4/TC#3/
     ;;
 
   4)
     TEST_CASE=./jmeter_test_cases/PostgreSQL/TestCase#4_Postgre.jmx
     TEST_CASE_RESULT=./jmeter_test_result/PostgreSQL/Simulation#4/TC#4/general_test_result.jtl
     TEST_CASE_REPORT=./jmeter_reports/PostgreSQL/Simulation#4/TC#4/
-    GRAF_FILE=./jmeter_test_result/PostgreSQL/Simulation#4/TC#4/general_test_result.jtl
-    GRAF_FOLDER=./jmeter_test_result/PostgreSQL/Simulation#4/TC#4/
+    RESULT_FOLDER=./jmeter_test_result/PostgreSQL/Simulation#4/TC#4/
     ;;
 
   5)
     TEST_CASE=./jmeter_test_cases/PostgreSQL/TestCase#5_Postgre.jmx
     TEST_CASE_RESULT=./jmeter_test_result/PostgreSQL/Simulation#4/TC#5/general_test_result.jtl
     TEST_CASE_REPORT=./jmeter_reports/PostgreSQL/Simulation#4/TC#5/
-    GRAF_FILE=./jmeter_test_result/PostgreSQL/Simulation#4/TC#5/general_test_result.jtl
-    GRAF_FOLDER=./jmeter_test_result/PostgreSQL/Simulation#4/TC#5/
+    RESULT_FOLDER=./jmeter_test_result/PostgreSQL/Simulation#4/TC#5/
     ;;
 
   *)
@@ -76,5 +71,5 @@ java -jar ./jmeter/bin/ApacheJMeter.jar \
 -Jusers_count_tc2=$USERS_COUNT_2 \
 -Jusers_count_tc3=$USERS_COUNT_3 \
 -Jusers_count_tc4=$USERS_COUNT_4 \
-  -f -t $TEST_CASE -l $TEST_CASE_RESULT -e -o $TEST_CASE_REPORT
+ -n -f -t $TEST_CASE -l $TEST_CASE_RESULT -e -o $TEST_CASE_REPORT
 
