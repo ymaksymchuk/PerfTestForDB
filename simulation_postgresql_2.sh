@@ -2,20 +2,17 @@
 
 TEST_CASE_NUMBER=$1;
 USERS_COUNT=$2;
-RAMP_UP=$3;
-LOOPS=$4;
 
 # Next params needed only for a TestCase#5
-USERS_COUNT_1=$5;
-USERS_COUNT_2=$6;
-USERS_COUNT_3=$7;
-USERS_COUNT_4=$8;
+USERS_COUNT_1=$3;
+USERS_COUNT_2=$4;
+USERS_COUNT_3=$5;
+USERS_COUNT_4=$6;
 
 TEST_CASE="";
 TEST_CASE_RESULT="";
 TEST_CASE_REPORT="";
-GRAF_FILE="";
-GRAF_FOLDER="";
+RESULT_FOLDER="";
 
 case $TEST_CASE_NUMBER in
 
@@ -64,24 +61,20 @@ case $TEST_CASE_NUMBER in
     exit;
     ;;
 esac
-echo "n\ ###########################################################################\n"
-echo "java -jar ./jmeter/bin/ApacheJMeter.jar \n
--Jusers_count=$USERS_COUNT \n
--Jramp_up=$RAMP_UP \n
--Jloops=$LOOPS \n
--Jusers_count_1=$USERS_COUNT_1 -Jusers_count_2=$USERS_COUNT_2 -Jusers_count_3=$USERS_COUNT_3 -Jusers_count_4=$USERS_COUNT_4 \n
--n -f -t $TEST_CASE -l $TEST_CASE_RESULT -e -o $TEST_CASE_REPORT"
-echo "\n ########################################################################### \n"
+
+echo "-Jusers_count=$USERS_COUNT \n
+      -Jresult_folder=$RESULT_FOLDER \n
+      -Jusers_count_tc1=$USERS_COUNT_1 \n
+      -Jusers_count_tc2=$USERS_COUNT_2 \n
+      -Jusers_count_tc3=$USERS_COUNT_3 \n
+      -Jusers_count_tc4=$USERS_COUNT_4 \n"
 
 java -jar ./jmeter/bin/ApacheJMeter.jar \
 -Jusers_count=$USERS_COUNT \
--Jramp_up=$RAMP_UP \
--Jloops=$LOOPS \
--Jgraf_folder=$GRAF_FOLDER \
--Jtime=600 \
--Jusers_count_1=$USERS_COUNT_1 \
--Jusers_count_2=$USERS_COUNT_2 \
--Jusers_count_3=$USERS_COUNT_3 \
--Jusers_count_4=$USERS_COUNT_4 \
--n -r -Djava.rmi.server.hostname=10.10.176.91 -f -t $TEST_CASE -l $TEST_CASE_RESULT -e -o $TEST_CASE_REPORT
+-Jresult_folder=$RESULT_FOLDER \
+-Jusers_count_tc1=$USERS_COUNT_1 \
+-Jusers_count_tc2=$USERS_COUNT_2 \
+-Jusers_count_tc3=$USERS_COUNT_3 \
+-Jusers_count_tc4=$USERS_COUNT_4 \
+  -f -t $TEST_CASE -l $TEST_CASE_RESULT -e -o $TEST_CASE_REPORT
 

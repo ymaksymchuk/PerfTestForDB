@@ -12,42 +12,4 @@ DATABASE cmnbs;
 USER cmnbs_usr
 PASSWORD 'Welc0me!';
 HOST: 10.10.0.35
-PORT: 15432
-
--Jhost
--Jport
--Juser
--Jpswd
--Jramp_up
--Jusers_count
--Jloops
-
-#For Test Case 4
--Jusers_count_1
--Jusers_count_2
--Jusers_count_3
--Jusers_count_4
-
-#
-> show databases
-name: databases
-name
-----
-_internal
-jmeter_postgres
-jmeter_mssql_server
-
-Destributed mode!!
-SQL Transaction per second from the DB engine(DBMon add)
-Connection per second
-
-compare Postgre SQL vs MS SQL server reports DONE
-
-
-scp rmi_keystore.jks ymaksymchuk@10.10.0.205:/home/ymaksymchuk/src/PerfTestForDB/jmeter/bin
-
-git clone https://ymaksymchuk:P2ssw0rd0000@github.com/ymaksymchuk/PerfTestForDB.git
-
-./jmeter-server -Djava.rmi.server.hostname=10.10.0.159 --loglevel=DEBUG
-./jmeter-server -Djava.rmi.server.hostname=10.10.0.146 --loglevel=DEBUG
-./jmeter-server -Djava.rmi.server.hostname=10.10.0.147 --loglevel=DEBUG
+PORT: 5432

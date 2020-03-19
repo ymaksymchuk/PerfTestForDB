@@ -3,5 +3,5 @@
 *.log
 jmeter/backups/*
 *.zip
-jmeter_reports/*
-jmeter_test_result/*
+jmeter_reports/**
+jmeter_test_result/**

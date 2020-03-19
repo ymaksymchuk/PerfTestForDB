@@ -32,19 +32,19 @@
             <stringProp name="Argument.value">${__P(pswd,Welc0me!)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="LOOPS" elementType="Argument">
-            <stringProp name="Argument.name">LOOPS</stringProp>
-            <stringProp name="Argument.value">${__P(loops,1)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="USERS_COUNT" elementType="Argument">
             <stringProp name="Argument.name">USERS_COUNT</stringProp>
             <stringProp name="Argument.value">${__P(users_count,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="RAMP_UP" elementType="Argument">
-            <stringProp name="Argument.name">RAMP_UP</stringProp>
-            <stringProp name="Argument.value">${__P(ramp_up,1)}</stringProp>
+          <elementProp name="RESULT_FOLDER" elementType="Argument">
+            <stringProp name="Argument.name">RESULT_FOLDER</stringProp>
+            <stringProp name="Argument.value">${__P(result_folder)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="TIME" elementType="Argument">
+            <stringProp name="Argument.name">TIME</stringProp>
+            <stringProp name="Argument.value">${__P(time,300)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -52,41 +52,41 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
-        <boolProp name="autocommit">true</boolProp>
-        <stringProp name="checkQuery"></stringProp>
-        <stringProp name="connectionAge">5000</stringProp>
-        <stringProp name="dataSource">aid</stringProp>
-        <stringProp name="dbUrl">jdbc:postgresql://${HOST}:${PORT}/${DATABASE}</stringProp>
-        <stringProp name="driver">org.postgresql.Driver</stringProp>
-        <boolProp name="keepAlive">true</boolProp>
-        <stringProp name="password">Welc0me!</stringProp>
-        <stringProp name="poolMax">0</stringProp>
-        <stringProp name="timeout">10000</stringProp>
-        <stringProp name="transactionIsolation">TRANSACTION_READ_UNCOMMITTED</stringProp>
-        <stringProp name="trimInterval">60000</stringProp>
-        <stringProp name="username">cmnbs_usr</stringProp>
-        <boolProp name="preinit">false</boolProp>
-        <stringProp name="initQuery"></stringProp>
-        <stringProp name="connectionProperties"></stringProp>
-      </JDBCDataSource>
-      <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">${LOOPS}</stringProp>
+          <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">${USERS_COUNT}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${RAMP_UP}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <longProp name="ThreadGroup.start_time">1370729701000</longProp>
         <longProp name="ThreadGroup.end_time">1370729701000</longProp>
-        <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">600</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
+          <boolProp name="autocommit">true</boolProp>
+          <stringProp name="checkQuery"></stringProp>
+          <stringProp name="connectionAge">5000</stringProp>
+          <stringProp name="dataSource">aid</stringProp>
+          <stringProp name="dbUrl">jdbc:postgresql://${HOST}:${PORT}/${DATABASE}</stringProp>
+          <stringProp name="driver">org.postgresql.Driver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">Welc0me!</stringProp>
+          <stringProp name="poolMax">20</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">cmnbs_usr</stringProp>
+          <boolProp name="preinit">true</boolProp>
+          <stringProp name="initQuery"></stringProp>
+          <stringProp name="connectionProperties"></stringProp>
+        </JDBCDataSource>
+        <hashTree/>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="PostgreSQL_TestCase#2" enabled="true">
           <stringProp name="dataSource">aid</stringProp>
           <stringProp name="query">---------------TEST Case #2
@@ -96,10 +96,10 @@
   
 
 do $$
-	declare p_aid int := round(random()*100000000); 
-	declare p_bid int := round(random()*1000); 
-	declare p_tid int := round(random()*10000); 
-	declare p_delta int := round(random()*10000)-5000; 
+	declare p_aid int := ceil(random()*100000000); 
+	declare p_bid int := ceil(random()*1000); 
+	declare p_tid int := ceil(random()*10000); 
+	declare p_delta int := ceil(random()*10000)-5000; 
 	declare p_abalance int;
 begin
 	-- body
@@ -133,126 +133,6 @@ $$ language plpgsql;
           <stringProp name="Assertion.scope">all</stringProp>
           <stringProp name="Scope.variable">Result</stringProp>
         </ResponseAssertion>
-        <hashTree/>
-        <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>false</encoding>
-              <assertions>true</assertions>
-              <subresults>true</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <sentBytes>true</sentBytes>
-              <url>true</url>
-              <threadCounts>true</threadCounts>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename"></stringProp>
-        </ResultCollector>
-        <hashTree/>
-        <kg.apc.jmeter.perfmon.PerfMonCollector guiclass="kg.apc.jmeter.vizualizers.PerfMonGui" testclass="kg.apc.jmeter.perfmon.PerfMonCollector" testname="jp@gc - PerfMon Metrics Collector" enabled="true">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>false</encoding>
-              <assertions>true</assertions>
-              <subresults>true</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <sentBytes>true</sentBytes>
-              <url>true</url>
-              <threadCounts>true</threadCounts>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename"></stringProp>
-          <longProp name="interval_grouping">1000</longProp>
-          <boolProp name="graph_aggregated">false</boolProp>
-          <stringProp name="include_sample_labels"></stringProp>
-          <stringProp name="exclude_sample_labels"></stringProp>
-          <stringProp name="start_offset"></stringProp>
-          <stringProp name="end_offset"></stringProp>
-          <boolProp name="include_checkbox_state">false</boolProp>
-          <boolProp name="exclude_checkbox_state">false</boolProp>
-          <collectionProp name="metricConnections">
-            <collectionProp name="1477381120">
-              <stringProp name="1180709214">${HOST}</stringProp>
-              <stringProp name="1600768">4444</stringProp>
-              <stringProp name="66952">CPU</stringProp>
-              <stringProp name="0"></stringProp>
-            </collectionProp>
-            <collectionProp name="-823333201">
-              <stringProp name="1180709214">${HOST}</stringProp>
-              <stringProp name="1600768">4444</stringProp>
-              <stringProp name="-1993889503">Memory</stringProp>
-              <stringProp name="0"></stringProp>
-            </collectionProp>
-            <collectionProp name="-163799910">
-              <stringProp name="1180709214">${HOST}</stringProp>
-              <stringProp name="1600768">4444</stringProp>
-              <stringProp name="2590131">Swap</stringProp>
-              <stringProp name="0"></stringProp>
-            </collectionProp>
-            <collectionProp name="1065676050">
-              <stringProp name="1180709214">${HOST}</stringProp>
-              <stringProp name="1600768">4444</stringProp>
-              <stringProp name="2112896831">Disks I/O</stringProp>
-              <stringProp name="0"></stringProp>
-            </collectionProp>
-            <collectionProp name="-710993185">
-              <stringProp name="1180709214">${HOST}</stringProp>
-              <stringProp name="1600768">4444</stringProp>
-              <stringProp name="-274342153">Network I/O</stringProp>
-              <stringProp name="0"></stringProp>
-            </collectionProp>
-            <collectionProp name="-836213054">
-              <stringProp name="1180709214">${HOST}</stringProp>
-              <stringProp name="1600768">4444</stringProp>
-              <stringProp name="82881">TCP</stringProp>
-              <stringProp name="0"></stringProp>
-            </collectionProp>
-          </collectionProp>
-        </kg.apc.jmeter.perfmon.PerfMonCollector>
         <hashTree/>
         <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -288,61 +168,8 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Graph Results_/${GRAF_FILE_NAME}</stringProp>
         </ResultCollector>
-        <hashTree/>
-        <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
-          <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="influxdbMetricsSender" elementType="Argument">
-                <stringProp name="Argument.name">influxdbMetricsSender</stringProp>
-                <stringProp name="Argument.value">org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="influxdbUrl" elementType="Argument">
-                <stringProp name="Argument.name">influxdbUrl</stringProp>
-                <stringProp name="Argument.value">http://10.10.0.205:8086/write?db=jmeter_postgres</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="application" elementType="Argument">
-                <stringProp name="Argument.name">application</stringProp>
-                <stringProp name="Argument.value">application name</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="measurement" elementType="Argument">
-                <stringProp name="Argument.name">measurement</stringProp>
-                <stringProp name="Argument.value">jmeter</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="summaryOnly" elementType="Argument">
-                <stringProp name="Argument.name">summaryOnly</stringProp>
-                <stringProp name="Argument.value">true</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="samplersRegex" elementType="Argument">
-                <stringProp name="Argument.name">samplersRegex</stringProp>
-                <stringProp name="Argument.value">.*</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="percentiles" elementType="Argument">
-                <stringProp name="Argument.name">percentiles</stringProp>
-                <stringProp name="Argument.value">90;95;99</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="testTitle" elementType="Argument">
-                <stringProp name="Argument.name">testTitle</stringProp>
-                <stringProp name="Argument.value">Test name</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="eventTags" elementType="Argument">
-                <stringProp name="Argument.name">eventTags</stringProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="classname">org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient</stringProp>
-        </BackendListener>
         <hashTree/>
         <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -378,7 +205,7 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_AggregateReport_/AggregateReport.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
@@ -415,10 +242,8 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Aggregate Report_/${GRAF_FILE_NAME}</stringProp>
         </ResultCollector>
-        <hashTree/>
-        <Summariser guiclass="SummariserGui" testclass="Summariser" testname="Generate Summary Results" enabled="true"/>
         <hashTree/>
         <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -454,7 +279,45 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Summary Report_/${GRAF_FILE_NAME}</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Response Time Graph_/${GRAF_FILE_NAME}</stringProp>
+          <stringProp name="RespTimeGraph.interval">1000</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
@@ -491,7 +354,7 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_View Results in Table_/${GRAF_FILE_NAME}</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
@@ -526,7 +389,7 @@ $$ language plpgsql;
               <sampleCount>true</sampleCount>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_View Results Tree_/${GRAF_FILE_NAME}</stringProp>
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="true">
@@ -563,7 +426,7 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Active Threads Over Time_/${GRAF_FILE_NAME}</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -608,7 +471,7 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Bytes Throughput Over Time_/${GRAF_FILE_NAME}</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -653,7 +516,7 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Connect Times Over Time_/${GRAF_FILE_NAME}</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -698,7 +561,7 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Hits per Second_/${GRAF_FILE_NAME}</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -743,7 +606,7 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Response Codes per Second_/${GRAF_FILE_NAME}</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -788,7 +651,7 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Response Latencies Over Time_/${GRAF_FILE_NAME}</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -833,7 +696,7 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Response Times Over Time_/${GRAF_FILE_NAME}</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -878,7 +741,7 @@ $$ language plpgsql;
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename"></stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_Transactions per Second_/${GRAF_FILE_NAME}</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>

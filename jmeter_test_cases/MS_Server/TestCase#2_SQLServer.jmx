@@ -78,7 +78,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${USERS_COUNT}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">100</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <longProp name="ThreadGroup.start_time">1370729701000</longProp>
         <longProp name="ThreadGroup.end_time">1370729701000</longProp>
@@ -182,7 +182,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_AggregateReport_/AggregateReport.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_AggregateReport_/AggregateReport.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
@@ -219,7 +219,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_AggregateGraph_/AggregateGraph.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_AggregateGraph_/AggregateGraph.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
@@ -256,7 +256,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_AssertionResults_/AssertionResults.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_AssertionResults_/AssertionResults.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
@@ -293,7 +293,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_GraphResults_/GraphResults.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_GraphResults_/GraphResults.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
@@ -330,7 +330,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseTimeGraph_/ResponseTimeGraph.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_ResponseTimeGraph_/ResponseTimeGraph.csv</stringProp>
           <stringProp name="RespTimeGraph.interval">1000</stringProp>
         </ResultCollector>
         <hashTree/>
@@ -368,7 +368,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_SummaryReport_/SummaryReport.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_SummaryReport_/SummaryReport.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="true">
@@ -405,7 +405,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ActiveThreadsOverTime_/ActiveThreadsOverTime.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_ActiveThreadsOverTime_/ActiveThreadsOverTime.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -450,7 +450,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_BytesThroughputOverTime_/BytesThroughputOverTime.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_BytesThroughputOverTime_/BytesThroughputOverTime.csv</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -495,7 +495,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ConnectTimesOverTime_/ConnectTimesOverTime.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_ConnectTimesOverTime_/ConnectTimesOverTime.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -540,7 +540,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_HitsperSecond_/HitsperSecond.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_HitsperSecond_/HitsperSecond.csv</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -585,7 +585,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseCodesperSecond_/ResponseCodesperSecond.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_ResponseCodesperSecond_/ResponseCodesperSecond.csv</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -630,7 +630,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseLatenciesOverTime_/ResponseLatenciesOverTime.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_ResponseLatenciesOverTime_/ResponseLatenciesOverTime.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -675,7 +675,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseTimesOverTime_/ResponseTimesOverTime.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_ResponseTimesOverTime_/ResponseTimesOverTime.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -720,7 +720,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_TransactionsperSecond_/TransactionsperSecond.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_TransactionsperSecond_/TransactionsperSecond.csv</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -765,7 +765,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseTimesPercentiles_/ResponseTimesPercentiles.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_ResponseTimesPercentiles_/ResponseTimesPercentiles.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -810,7 +810,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_TransactionThroughputVSThreads_/TransactionThroughputVSThreads.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_TransactionThroughputVSThreads_/TransactionThroughputVSThreads.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -855,7 +855,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseTimesVSThreads_/ResponseTimesVSThreads.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_ResponseTimesVSThreads_/ResponseTimesVSThreads.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -900,7 +900,7 @@ END;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_SimpleDataWriter_/SimpleDataWriter.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_2/_SimpleDataWriter_/SimpleDataWriter.csv</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>

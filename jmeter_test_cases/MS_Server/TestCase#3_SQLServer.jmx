@@ -78,7 +78,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">300</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${USERS_COUNT}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">0</stringProp>
         <longProp name="ThreadGroup.start_time">1370729701000</longProp>
         <longProp name="ThreadGroup.end_time">1370729701000</longProp>
@@ -537,7 +537,7 @@ ELSE
 	Print &apos;@CASE_ID is null&apos;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
-          <stringProp name="queryType">Callable Statement</stringProp>
+          <stringProp name="queryType">Prepared Update Statement</stringProp>
           <stringProp name="resultVariable">result</stringProp>
           <stringProp name="variableNames">aid,tid,bid,delta</stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -556,43 +556,6 @@ ELSE
           <stringProp name="Assertion.scope">all</stringProp>
           <stringProp name="Scope.variable">Result</stringProp>
         </ResponseAssertion>
-        <hashTree/>
-        <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>false</encoding>
-              <assertions>true</assertions>
-              <subresults>true</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <sentBytes>true</sentBytes>
-              <url>true</url>
-              <threadCounts>true</threadCounts>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename"></stringProp>
-        </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -628,7 +591,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_AggregateReport_/AggregateReport.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_AggregateReport_/AggregateReport.csv</stringProp>
           <boolProp name="ResultCollector.success_only_logging">true</boolProp>
         </ResultCollector>
         <hashTree/>
@@ -666,7 +629,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_AggregateGraph_/AggregateGraph.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_AggregateGraph_/AggregateGraph.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
@@ -703,7 +666,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_GraphResults_/GraphResults.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_GraphResults_/GraphResults.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
@@ -740,7 +703,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_SummaryReport_/SummaryReport.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_SummaryReport_/SummaryReport.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
@@ -777,7 +740,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseTimeGraph_/ResponseTimeGraph.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_ResponseTimeGraph_/ResponseTimeGraph.csv</stringProp>
           <stringProp name="RespTimeGraph.interval">1000</stringProp>
         </ResultCollector>
         <hashTree/>
@@ -815,7 +778,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ViewResultsinTable_/ViewResultsinTable.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_ViewResultsinTable_/ViewResultsinTable.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
@@ -855,7 +818,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ViewResultsTree_/ViewResultsTree.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_ViewResultsTree_/ViewResultsTree.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="true">
@@ -892,7 +855,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ActiveThreadsOverTime_/ActiveThreadsOverTime.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_ActiveThreadsOverTime_/ActiveThreadsOverTime.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -937,7 +900,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_BytesThroughputOverTime_/BytesThroughputOverTime.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_BytesThroughputOverTime_/BytesThroughputOverTime.csv</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -982,7 +945,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ConnectTimesOverTime_/ConnectTimesOverTime.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_ConnectTimesOverTime_/ConnectTimesOverTime.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1027,7 +990,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_HitsperSecond_/HitsperSecond.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_HitsperSecond_/HitsperSecond.csv</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1072,7 +1035,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseCodesperSecond_/ResponseCodesperSecond.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_ResponseCodesperSecond_/ResponseCodesperSecond.csv</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1117,7 +1080,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseLatenciesOverTime_/ResponseLatenciesOverTime.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_ResponseLatenciesOverTime_/ResponseLatenciesOverTime.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1162,7 +1125,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseTimesOverTime_/ResponseTimesOverTime.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_ResponseTimesOverTime_/ResponseTimesOverTime.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1207,7 +1170,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseTimesVSThreads_/ResponseTimesVSThreads.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_ResponseTimesVSThreads_/ResponseTimesVSThreads.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1252,7 +1215,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_TransactionThroughputVSThreads_/TransactionThroughputVSThreads.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_TransactionThroughputVSThreads_/TransactionThroughputVSThreads.csv</stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1297,7 +1260,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_TransactionsperSecond_/TransactionsperSecond.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_TransactionsperSecond_/TransactionsperSecond.csv</stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1342,7 +1305,7 @@ ELSE
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_SimpleDataWriter_/SimpleDataWriter.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_3/_SimpleDataWriter_/SimpleDataWriter.csv</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>
