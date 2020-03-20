@@ -47,21 +47,6 @@
             <stringProp name="Argument.value">${__P(ramp_up,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="GRAF_FILE" elementType="Argument">
-            <stringProp name="Argument.name">GRAF_FILE</stringProp>
-            <stringProp name="Argument.value">${__P(graf_file)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="GRAF_FOLDER" elementType="Argument">
-            <stringProp name="Argument.name">GRAF_FOLDER</stringProp>
-            <stringProp name="Argument.value">${__P(graf_folder)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="GRAF_FILE_NAME" elementType="Argument">
-            <stringProp name="Argument.name">GRAF_FILE_NAME</stringProp>
-            <stringProp name="Argument.value">result.jtl</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="TIME" elementType="Argument">
             <stringProp name="Argument.name">TIME</stringProp>
             <stringProp name="Argument.value">${__P(time,600)}</stringProp>
@@ -83,9 +68,9 @@
         <longProp name="ThreadGroup.start_time">1370729701000</longProp>
         <longProp name="ThreadGroup.end_time">1370729701000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">600</stringProp>
+        <stringProp name="ThreadGroup.duration">${TIME}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
@@ -537,7 +522,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_AggregateReport_/AggregateReport.csv</stringProp>
+          <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
@@ -574,7 +559,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_AggregateGraph_/AggregateGraph.csv</stringProp>
+          <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
@@ -611,7 +596,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_GraphResults_/GraphResults.csv</stringProp>
+          <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
@@ -648,7 +633,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_ResponseTimeGraph_/ResponseTimeGraph.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <stringProp name="RespTimeGraph.interval">1000</stringProp>
         </ResultCollector>
         <hashTree/>
@@ -686,7 +671,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_SummaryReport_/SummaryReport.csv</stringProp>
+          <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.ThreadsStateOverTimeGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Active Threads Over Time" enabled="true">
@@ -723,7 +708,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_ActiveThreadsOverTime_/ActiveThreadsOverTime.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -768,7 +753,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_BytesThroughputOverTime_/BytesThroughputOverTime.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -813,7 +798,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_ConnectTimesOverTime_/ConnectTimesOverTime.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -858,7 +843,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_HitsperSecond_/HitsperSecond.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -903,7 +888,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_ResponseCodesperSecond_/ResponseCodesperSecond.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -948,7 +933,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_ResponseLatenciesOverTime_/ResponseLatenciesOverTime.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -993,7 +978,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_ResponseTimesOverTime_/ResponseTimesOverTime.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1038,7 +1023,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_TransactionsperSecond_/TransactionsperSecond.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1083,7 +1068,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_TransactionThroughputVsThreads_/TransactionThroughputVsThreads.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1128,7 +1113,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_ResponseTimeVsThreads_/ResponseTimeVsThreads.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -1173,7 +1158,7 @@ SET @NEW_ADDRESS_ID = 0
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_4/_SimpleDataWriter_/SimpleDataWriter.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_4/SimpleDataWriter.csv</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>

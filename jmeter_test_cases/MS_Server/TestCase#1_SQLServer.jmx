@@ -73,9 +73,9 @@
         <longProp name="ThreadGroup.start_time">1370729701000</longProp>
         <longProp name="ThreadGroup.end_time">1370729701000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">600</stringProp>
+        <stringProp name="ThreadGroup.duration">${TIME}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
@@ -159,7 +159,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_1/_AggregateReport_/AggregateReport.csv</stringProp>
+          <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="Aggregate Graph" enabled="true">
@@ -196,7 +196,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_1/_AggregateGraph_/AggregateGraph.csv</stringProp>
+          <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
@@ -233,7 +233,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_1/_ResponseTimeGraph_/ResponseTimeGraph.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <stringProp name="RespTimeGraph.interval">500</stringProp>
         </ResultCollector>
         <hashTree/>
@@ -271,7 +271,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_1/_GraphResults_/GraphResults.csv</stringProp>
+          <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
@@ -308,7 +308,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_1/_Summary Report_/SummaryReport.csv</stringProp>
+          <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
         <kg.apc.jmeter.vizualizers.CorrectedResultCollector guiclass="kg.apc.jmeter.vizualizers.TransactionsPerSecondGui" testclass="kg.apc.jmeter.vizualizers.CorrectedResultCollector" testname="jp@gc - Transactions per Second" enabled="true">
@@ -345,7 +345,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_TransactionsperSecond_/TransactionsperSecond.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -390,7 +390,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseTimesOverTime_/ResponseTimesOverTime.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -435,7 +435,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/_ResponseCodesperSecond_/ResponseCodesperSecond.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -480,7 +480,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_1/_ResponseCodesperSecond_/ResponseCodesperSecond.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">100</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -525,7 +525,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_1/_HitsperSecond_/HitsperSecond.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -570,7 +570,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_1/_ConnectTimesOverTime_/ConnectTimesOverTime.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -615,7 +615,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_1/_Bytes Throughput Over Time_/BytesThroughputOverTime.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">1000</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -660,7 +660,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_1/_ActiveThreadsOverTime_/ActiveThreadsOverTime.csv</stringProp>
+          <stringProp name="filename"></stringProp>
           <longProp name="interval_grouping">500</longProp>
           <boolProp name="graph_aggregated">false</boolProp>
           <stringProp name="include_sample_labels"></stringProp>
@@ -705,7 +705,7 @@ SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">~/TEST_CASE_1/_SimpleDataWriter_/SimpleDataWriter.csv</stringProp>
+          <stringProp name="filename">~/TEST_CASE_1/SimpleDataWriter.csv</stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>

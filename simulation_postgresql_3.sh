@@ -2,12 +2,11 @@
 
 TEST_CASE_NUMBER=$1;
 USERS_COUNT=$2;
-
-# Next params needed only for a TestCase#5
-USERS_COUNT_1=$3;
-USERS_COUNT_2=$4;
-USERS_COUNT_3=$5;
-USERS_COUNT_4=$6;
+TIME=$3;
+USERS_COUNT_1=$4;
+USERS_COUNT_2=$5;
+USERS_COUNT_3=$6;
+USERS_COUNT_4=$7;
 
 TEST_CASE="";
 TEST_CASE_RESULT="";
@@ -61,7 +60,11 @@ case $TEST_CASE_NUMBER in
     exit;
     ;;
 esac
+
 echo "-Jusers_count=$USERS_COUNT \n
+      -Time=$TIME \n
+      -Test_Case=$TEST_CASE \n
+      -Test Report=$TEST_CASE_REPORT \n
       -Jresult_folder=$RESULT_FOLDER \n
       -Jusers_count_tc1=$USERS_COUNT_1 \n
       -Jusers_count_tc2=$USERS_COUNT_2 \n
@@ -71,6 +74,7 @@ echo "-Jusers_count=$USERS_COUNT \n
 java -jar ./jmeter/bin/ApacheJMeter.jar \
 -Jusers_count=$USERS_COUNT \
 -Jresult_folder=$RESULT_FOLDER \
+-Jtime=$TIME \
 -Jusers_count_tc1=$USERS_COUNT_1 \
 -Jusers_count_tc2=$USERS_COUNT_2 \
 -Jusers_count_tc3=$USERS_COUNT_3 \
