@@ -75,7 +75,7 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">/Users/ymaksymchuk/source/LoadTests/JmeterDB_Example/jmeter_test_result/merged_test_results/Simulation#1/TC#2/Updated_3_settings/merged_result_tc2_5min.jtl</stringProp>
+        <stringProp name="filename">jmeter_test_result/MS_SQL/Simulation#1/TC#1/result.jtl</stringProp>
         <longProp name="interval_grouping">500</longProp>
         <boolProp name="graph_aggregated">false</boolProp>
         <stringProp name="include_sample_labels"></stringProp>
@@ -85,22 +85,22 @@
         <boolProp name="include_checkbox_state">false</boolProp>
         <boolProp name="exclude_checkbox_state">false</boolProp>
         <collectionProp name="MergeResultsControlGui.data">
-          <collectionProp name="586941177">
-            <stringProp name="-9709318">jmeter_test_result/PostgreSQL/Simulation#1/TC#2/general_test_result.jtl</stringProp>
+          <collectionProp name="-932314368">
+            <stringProp name="369431930">jmeter_test_result/MS_SQL/Simulation#1/TC#1/general_test_result.jtl</stringProp>
             <stringProp name="0"></stringProp>
             <stringProp name="0"></stringProp>
             <stringProp name="1512228">1500</stringProp>
-            <stringProp name="753417404">PostgreSQL_TestCase#2</stringProp>
+            <stringProp name="0"></stringProp>
             <stringProp name="1237">false</stringProp>
             <stringProp name="0"></stringProp>
             <stringProp name="1237">false</stringProp>
           </collectionProp>
-          <collectionProp name="-1903156545">
-            <stringProp name="-1707777413">jmeter_test_result/MS_SQL/Simulation#1/TC#2/general_test_result.jtl</stringProp>
+          <collectionProp name="1069331664">
+            <stringProp name="-1179351138">jmeter_test_result/MS_SQL/Simulation#1/TC#1/205.jtl</stringProp>
             <stringProp name="0"></stringProp>
             <stringProp name="0"></stringProp>
             <stringProp name="1512228">1500</stringProp>
-            <stringProp name="-1153676837">MS_SQL_TestCase#2</stringProp>
+            <stringProp name="0"></stringProp>
             <stringProp name="1237">false</stringProp>
             <stringProp name="0"></stringProp>
             <stringProp name="1237">false</stringProp>

@@ -77,6 +77,26 @@
             <stringProp name="Argument.value">${__P(result_folder)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="POOL_SIZE_TC1" elementType="Argument">
+            <stringProp name="Argument.name">POOL_SIZE_TC1</stringProp>
+            <stringProp name="Argument.value">${__P(pool_size_tc1,20)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="POOL_SIZE_TC2" elementType="Argument">
+            <stringProp name="Argument.name">POOL_SIZE_TC2</stringProp>
+            <stringProp name="Argument.value">${__P(pool_size_tc2,20)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="POOL_SIZE_TC3" elementType="Argument">
+            <stringProp name="Argument.name">POOL_SIZE_TC3</stringProp>
+            <stringProp name="Argument.value">${__P(pool_size_tc3,50)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="POOL_SIZE_TC4" elementType="Argument">
+            <stringProp name="Argument.name">POOL_SIZE_TC4</stringProp>
+            <stringProp name="Argument.value">${__P(pool_size_tc4,50)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
@@ -829,7 +849,7 @@
           <stringProp name="driver">org.postgresql.Driver</stringProp>
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="password">Welc0me!</stringProp>
-          <stringProp name="poolMax">20</stringProp>
+          <stringProp name="poolMax">${POOL_SIZE_TC1}</stringProp>
           <stringProp name="timeout">10000</stringProp>
           <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
@@ -899,7 +919,7 @@ $$ language plpgsql;</stringProp>
           <stringProp name="driver">org.postgresql.Driver</stringProp>
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="password">Welc0me!</stringProp>
-          <stringProp name="poolMax">20</stringProp>
+          <stringProp name="poolMax">${POOL_SIZE_TC2}</stringProp>
           <stringProp name="timeout">10000</stringProp>
           <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
@@ -982,7 +1002,7 @@ $$ language plpgsql;
           <stringProp name="driver">org.postgresql.Driver</stringProp>
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="password">Welc0me!</stringProp>
-          <stringProp name="poolMax">20</stringProp>
+          <stringProp name="poolMax">${POOL_SIZE_TC3}</stringProp>
           <stringProp name="timeout">10000</stringProp>
           <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
@@ -1649,7 +1669,7 @@ END$$</stringProp>
           <stringProp name="driver">org.postgresql.Driver</stringProp>
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="password">Welc0me!</stringProp>
-          <stringProp name="poolMax">50</stringProp>
+          <stringProp name="poolMax">${POOL_SIZE_TC4}</stringProp>
           <stringProp name="timeout">10000</stringProp>
           <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
           <stringProp name="trimInterval">60000</stringProp>

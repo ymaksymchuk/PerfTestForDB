@@ -1,18 +1,24 @@
 #!/usr/bin/env bash
 
-TEST_CASE_NUMBER=$1;
-USERS_COUNT=$2;
-TIME=$3;
-USERS_COUNT_1=$4;
-USERS_COUNT_2=$5;
-USERS_COUNT_3=$6;
-USERS_COUNT_4=$7;
+TEST_CASE_NUMBER=${1};
+USERS_COUNT=${2};
+POOL_SIZE=${3};
+TIME=${4};
+
+USERS_COUNT_1=${5};
+USERS_COUNT_2=${6};
+USERS_COUNT_3=${7};
+USERS_COUNT_4=${8};
+
+POOL_SIZE_TC1=${9};
+POOL_SIZE_TC2=${10};
+POOL_SIZE_TC3=${11};
+POOL_SIZE_TC4=${12};
 
 TEST_CASE="";
 TEST_CASE_RESULT="";
 TEST_CASE_REPORT="";
 RESULT_FOLDER="";
-
 case $TEST_CASE_NUMBER in
 
   1)
@@ -57,6 +63,7 @@ case $TEST_CASE_NUMBER in
 esac
 
 echo "-Jusers_count=$USERS_COUNT \n
+      -Jpool_size=$POOL_SIZE \n
       -Time=$TIME \n
       -Test_Case=$TEST_CASE \n
       -Test Report=$TEST_CASE_REPORT \n
@@ -64,14 +71,23 @@ echo "-Jusers_count=$USERS_COUNT \n
       -Jusers_count_tc1=$USERS_COUNT_1 \n
       -Jusers_count_tc2=$USERS_COUNT_2 \n
       -Jusers_count_tc3=$USERS_COUNT_3 \n
-      -Jusers_count_tc4=$USERS_COUNT_4 \n"
+      -Jusers_count_tc4=$USERS_COUNT_4 \n
+      -Jpool_size_tc1=$POOL_SIZE_TC1 \n
+      -Jpool_size_tc2=$POOL_SIZE_TC2 \n
+      -Jpool_size_tc3=$POOL_SIZE_TC3 \n
+      -Jpool_size_tc4=$POOL_SIZE_TC4 \n"
 
 java -jar ./jmeter/bin/ApacheJMeter.jar \
 -Jusers_count=$USERS_COUNT \
 -Jresult_folder=$RESULT_FOLDER \
+-Jpool_size=$POOL_SIZE \
 -Jtime=$TIME \
 -Jusers_count_tc1=$USERS_COUNT_1 \
 -Jusers_count_tc2=$USERS_COUNT_2 \
 -Jusers_count_tc3=$USERS_COUNT_3 \
 -Jusers_count_tc4=$USERS_COUNT_4 \
+-Jpool_size_tc1=$POOL_SIZE_TC1 \
+-Jpool_size_tc2=$POOL_SIZE_TC2 \
+-Jpool_size_tc3=$POOL_SIZE_TC3 \
+-Jpool_size_tc4=$POOL_SIZE_TC4 \
  -n -f -t $TEST_CASE -l $TEST_CASE_RESULT -e -o $TEST_CASE_REPORT
