@@ -7,3 +7,4 @@ jmeter/backups/*
 *.rar
 jmeter_reports/**
 jmeter_test_result/**
+*.txt

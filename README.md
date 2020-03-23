@@ -1,11 +1,4 @@
-#TODO 
-*Hot to run tests \
-*How to start Server Agents \
-*How to setting up grafana \
-*How to analise reports
-
-# a360inc VIA Inception
-## OLTP POC
+#VIA Perf
 
 ## Supported Platforms
 * Windows 10 (sub system linux) with shell
