@@ -15,6 +15,8 @@ POOL_SIZE_TC2=${10};
 POOL_SIZE_TC3=${11};
 POOL_SIZE_TC4=${12};
 
+CONNECTION_WAIT=${13};
+
 TEST_CASE="";
 TEST_CASE_RESULT="";
 TEST_CASE_REPORT="";
@@ -81,7 +83,8 @@ echo "-Jusers_count=$USERS_COUNT \n
       -Jpool_size_tc1=$POOL_SIZE_TC1 \n
       -Jpool_size_tc2=$POOL_SIZE_TC2 \n
       -Jpool_size_tc3=$POOL_SIZE_TC3 \n
-      -Jpool_size_tc4=$POOL_SIZE_TC4 \n"
+      -Jpool_size_tc4=$POOL_SIZE_TC4 \n\
+      -Jconnection_wait=$CONNECTION_WAIT \n"
 
 java -jar ./jmeter/bin/ApacheJMeter.jar \
 -Jusers_count=$USERS_COUNT \
@@ -96,5 +99,6 @@ java -jar ./jmeter/bin/ApacheJMeter.jar \
 -Jpool_size_tc2=$POOL_SIZE_TC2 \
 -Jpool_size_tc3=$POOL_SIZE_TC3 \
 -Jpool_size_tc4=$POOL_SIZE_TC4 \
+-Jconnection_wait=$CONNECTION_WAIT \
  -n -f -t $TEST_CASE -l $TEST_CASE_RESULT -e -o $TEST_CASE_REPORT
 
