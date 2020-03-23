@@ -106,7 +106,7 @@ In scope of test will be run all test described before
 
 
 ## 4. Running tests
-####To run test on your locl pc you can run 
+#### To run test on your locl pc you can run 
 ```
 java -jar ./jmeter/bin/ApacheJMeter.jar 
 ```
@@ -114,7 +114,7 @@ And open testcase what you want to run manually from the folder
 ```
 ./jmeter_test_cases/*
 ```
-####To run test on remote server *nix like
+#### To run test on remote server *nix like
 ```
 sh simulation_<your database>_<simulation number>.sh 1 50 20 10000 300   
 ```
@@ -125,7 +125,7 @@ where:
 * third  argument amount of connections in connection pool
 * forth argument time of test execution in millisecond  
 
-####To run test case 5 use next command 
+#### To run test case 5 use next command 
 ```
 sh simulation_postgresql_1.sh <TC number> 0 0 <Time of execution> <Amount of users for tc1>  <Amount of users for tc2> <Amount of users for tc3> <Amount of users for tc4> <Connection pool size for tc1> <Connection pool size for tc2> <Connection pool size for tc3> <Connection pool size for tc4>
 ```
