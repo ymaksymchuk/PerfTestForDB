@@ -9,7 +9,6 @@
 
 ## Supported Platforms
 
-* Windows
 * Mac OS
 * Linux
 
@@ -35,7 +34,11 @@ include all scripts and additional documents for the test or reports etc.
 - jmeter \
 in this folder full installed and suited Apache Jmeter with all necessary plugins
 
-- jmeter \
+- jmeter_reports \
+
+- jmeter_test_case \
+
+- jmeter_test_result \
 
 ## 2. Configuring test project
 
@@ -48,11 +51,6 @@ git clone https://github.com/ymaksymchuk/PerfTestForDB.git
 - Install Java 8
 ```
 https://adoptopenjdk.net/releases.html
-```
-
-- Install Taurus if you want to use Taurus as a test runner 
-```
-https://gettaurus.org/
 ```
 
 ## 3. Test case explanation
