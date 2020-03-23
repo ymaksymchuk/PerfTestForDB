@@ -97,6 +97,11 @@
             <stringProp name="Argument.value">${__P(pool_size_tc4,50)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="MAX_WAIT_CONNECTION" elementType="Argument">
+            <stringProp name="Argument.name">MAX_WAIT_CONNECTION</stringProp>
+            <stringProp name="Argument.value">${__P(connection_wait,10000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
@@ -850,7 +855,7 @@
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE_TC1}</stringProp>
-          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="timeout">${MAX_WAIT_CONNECTION}</stringProp>
           <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs_usr</stringProp>
@@ -920,7 +925,7 @@ $$ language plpgsql;</stringProp>
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE_TC2}</stringProp>
-          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="timeout">${MAX_WAIT_CONNECTION}</stringProp>
           <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs_usr</stringProp>
@@ -1003,7 +1008,7 @@ $$ language plpgsql;
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE_TC3}</stringProp>
-          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="timeout">${MAX_WAIT_CONNECTION}</stringProp>
           <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs_usr</stringProp>
@@ -1670,7 +1675,7 @@ END$$</stringProp>
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE_TC4}</stringProp>
-          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="timeout">${MAX_WAIT_CONNECTION}</stringProp>
           <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs_usr</stringProp>
