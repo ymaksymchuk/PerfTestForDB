@@ -8,3 +8,6 @@ jmeter/backups/*
 jmeter_reports/**
 jmeter_test_result/**
 *.txt
+*.css
+*.sass
+*.html
