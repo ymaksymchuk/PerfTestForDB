@@ -78,7 +78,7 @@ echo "-Jusers_count=$USERS_COUNT \n
       -Jpool_size_tc1=$POOL_SIZE_TC1 \n
       -Jpool_size_tc2=$POOL_SIZE_TC2 \n
       -Jpool_size_tc3=$POOL_SIZE_TC3 \n
-      -Jpool_size_tc4=$POOL_SIZE_TC4 \n\"
+      -Jpool_size_tc4=$POOL_SIZE_TC4 \n"
 
 java -jar ./jmeter/bin/ApacheJMeter.jar \
 -Jusers_count=$USERS_COUNT \
