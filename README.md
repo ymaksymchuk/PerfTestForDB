@@ -123,15 +123,16 @@ where:
 * first argument number of test case
 * second argument amount of users
 * third  argument amount of connections in connection pool
-* forth argument time of test execution in millisecond  
+* forth  max time what jmeter thread will wait on jdbc connection before throw exception
+* five argument time of test execution in millisecond  
 
 #### To run test case 5 use next command 
 ```
-sh simulation_postgresql_1.sh <TC number> 0 0 <Time of execution> <Amount of users for tc1>  <Amount of users for tc2> <Amount of users for tc3> <Amount of users for tc4> <Connection pool size for tc1> <Connection pool size for tc2> <Connection pool size for tc3> <Connection pool size for tc4>
+sh simulation_postgresql_1.sh <TC number> 0 0 <Connection time wait> <Time of execution> <Amount of users for tc1>  <Amount of users for tc2> <Amount of users for tc3> <Amount of users for tc4> <Connection pool size for tc1> <Connection pool size for tc2> <Connection pool size for tc3> <Connection pool size for tc4>
 ```
 example: 
 ```
-sh simulation_postgresql_1.sh 5 0 0 180 50 75 75 50 20 50 50 20
+sh simulation_postgresql_1.sh 5 0 0 10000 180 50 75 75 50 20 50 50 20
 ```
 
 ### 5. Results and reports
