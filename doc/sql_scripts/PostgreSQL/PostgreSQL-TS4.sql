@@ -161,20 +161,20 @@ raise notice 'v_CASE_TMPL_ID = %',  cast(v_CASE_TMPL_ID as character varying(20)
 			v_CASE_TYPE_ID,
 			v_LOCATION_ID,
 			v_BK_CHAPTER_ID,
-			v_CASE_TMPL_ID,
+			COALESCE(v_CASE_TMPL_ID, 42),
 			v_CASE_FILE_RECEIVED::timestamp without time zone,
 			v_CASE_STARTED::timestamp without time zone,
 			v_CASE_WHO_HAS,
 			v_CASE_NUMBER
 			--@CORE_PROCESS_NAME
 		);
-	
+
 	v_EndTime := clock_timestamp();
 	select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 	raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 	raise notice 'v_CASE_ID = %',  cast(v_CASE_ID as character varying(20));
-	
+
 	v_StartTime := clock_timestamp();
 	SELECT nextval('public.sq_case_status_serial') into v_CASE_STAT_ID;
 	INSERT INTO public.CMS_CASE_STATUS (CASE_STAT_ID, STATUS_ID, CASE_ID, CASE_STAT_USR_ID, CASE_STAT_USR_NAME)
@@ -221,11 +221,11 @@ v_StartTime := clock_timestamp();
 			a.ACT_TMPL_SEQ_NUM,
 			a.ACT_TMPL_ID,
 			mtn.USER_GROUP_ID
-    FROM public.CMS_ACTIVITY_TEMPLATE a 
+    FROM public.CMS_ACTIVITY_TEMPLATE a
 		JOIN public.CMS_MS_TEMPLATE_NEW mtn ON a.MS_ID = mtn.MS_ID
-    WHERE a.CASE_TMPL_ID = v_case_tmpl_id 
+    WHERE a.CASE_TMPL_ID = v_case_tmpl_id
     ORDER BY a.ACT_TMPL_SEQ_NUM asc;
-	
+
 v_EndTime := clock_timestamp();
 select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
@@ -247,7 +247,7 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 v_StartTime := clock_timestamp();
 	select current_timestamp at time zone 'utc' into v_UTC;
 	select nextval('public.sq_comment_serial') into v_COMMENT_ID;
-	INSERT INTO public.CMS_COMMENT(COMMENT_ID, CMNT_TYPE_ID,CASE_ID,COMMENT_TEXT,COMMENT_USR_ID,COMMENT_USR_NAME,COMMENT_DATE) 
+	INSERT INTO public.CMS_COMMENT(COMMENT_ID, CMNT_TYPE_ID,CASE_ID,COMMENT_TEXT,COMMENT_USR_ID,COMMENT_USR_NAME,COMMENT_DATE)
       VALUES(v_COMMENT_ID,6,v_CASE_ID,'Comment',v_USERID,v_USERNAME,v_UTC);
 	raise notice 'COMMENT inserted: %',  cast(v_COMMENT_ID as character varying(20));
 
@@ -269,10 +269,10 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 -- CMSWS_SP_INSERT_DEFENDANT_NEW
 v_StartTime := clock_timestamp();
-		SELECT DEFICIENCY_REASON_ID into v_DEFICIENCY_REASON_ID FROM public.CMS_DEFENDANT_DEFICIENCY_REASON 
+		SELECT DEFICIENCY_REASON_ID into v_DEFICIENCY_REASON_ID FROM public.CMS_DEFENDANT_DEFICIENCY_REASON
 			WHERE DEFICIENCY_REASON_NAME = v_DEFICIENCY_REASON_NAME;
 
-		SELECT APPEARANCE_TYPE_ID into v_APPEARANCE_TYPE_ID FROM public.CMS_DEFENDANT_APPEARANCE_TYPE 
+		SELECT APPEARANCE_TYPE_ID into v_APPEARANCE_TYPE_ID FROM public.CMS_DEFENDANT_APPEARANCE_TYPE
 			WHERE APPEARANCE_TYPE_NAME = v_APPEARANCE_TYPE_NAME;
 
 		SELECT CONSENT_TYPE_ID into v_CONSENT_TYPE_ID FROM public.CMS_DEFENDANT_CONSENT_TYPE
@@ -283,12 +283,12 @@ select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 		--SET @TEMP_CONTACT_ID = @CONTACT_ID
-v_StartTime := clock_timestamp();		
-		SELECT CT.CONT_TYPE_ID, 
+v_StartTime := clock_timestamp();
+		SELECT CT.CONT_TYPE_ID,
 				CT.CONT_TYPE_CASE_FILE,
-				CMPLX.COMP_FIELD_SNGL 
+				CMPLX.COMP_FIELD_SNGL
 			into v_CONT_TYPE_ID, v_CONT_TYPE_CASE_FILE, v_COMP_FIELD_SNGL
-			FROM public.CMS_CONTACT_TYPE CT 
+			FROM public.CMS_CONTACT_TYPE CT
 				LEFT OUTER JOIN public.CMS_COMPLEX_FIELD CMPLX ON CT.CONT_TYPE_ID=CMPLX.CONT_TYPE_ID
 			WHERE CONT_TYPE_NAME = v_CONT_TYPE_NAME;
 
@@ -300,10 +300,10 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 		IF v_CONT_TYPE_CASE_FILE then
 			v_CASE_ID_VAR := v_CASE_ID;
 		END IF;
- 
-		IF EXISTS (SELECT 1 FROM public.CMS_ACTOR  WHERE CASE_ID = V_CASE_ID AND CONTACT_ID = V_CONTACT_ID 
+
+		IF EXISTS (SELECT 1 FROM public.CMS_ACTOR  WHERE CASE_ID = V_CASE_ID AND CONTACT_ID = V_CONTACT_ID
 			AND CASE_FILE_ID = V_CASE_FILE_ID) THEN
-				 delete from public.CMS_ACTOR  WHERE CASE_ID = V_CASE_ID AND CONTACT_ID = v_CONTACT_ID 
+				 delete from public.CMS_ACTOR  WHERE CASE_ID = V_CASE_ID AND CONTACT_ID = v_CONTACT_ID
 				AND CASE_FILE_ID = v_CASE_FILE_ID;
 			END IF;
 
@@ -333,7 +333,7 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 	raise notice 'ACTOR inserted: %',  cast(v_ACTOR_ID as character varying(20));
 
 v_StartTime := clock_timestamp();
-	INSERT INTO public.CMS_DEFENDANT 
+	INSERT INTO public.CMS_DEFENDANT
 		(
 			ACTOR_ID,
 			D_OCCUPANCY,
@@ -347,7 +347,7 @@ v_StartTime := clock_timestamp();
 			D_CONSENT_RECEIVED,
 			CONSENT_TYPE_ID,
 			D_NOTICE_SENT_STAT,
-			D_DEFAULT_NOTICE_SENT,		
+			D_DEFAULT_NOTICE_SENT,
 			D_DEFAULT_EXPIRED,
 			D_DEFAULT_ORDERED,
 			D_ORDER_SENT,
@@ -373,7 +373,7 @@ v_StartTime := clock_timestamp();
 			v_D_CONSENT_RECEIVED,
 			v_CONSENT_TYPE_ID,
 			v_D_NOTICE_SENT_STAT,
-			v_D_DEFAULT_NOTICE_SENT,		
+			v_D_DEFAULT_NOTICE_SENT,
 			v_D_DEFAULT_EXPIRED,
 			v_D_DEFAULT_ORDERED,
 			v_D_ORDER_SENT,
@@ -399,7 +399,7 @@ v_StartTime := clock_timestamp();
 		SELECT  COUNTY_ID into v_COUNTY_ID FROM public.CMS_COUNTY
 			WHERE COUNTY_NAME = v_COUNTY_NAME AND STATE_ID = v_STATE_ID;
 
-		SELECT  CNTR_ID into v_CNTR_ID FROM public.CMS_COUNTRY 
+		SELECT  CNTR_ID into v_CNTR_ID FROM public.CMS_COUNTRY
 			WHERE CNTR_NAME = v_COUNTRY_NAME;
 
 		select nextval('public.sq_address_serial') into v_ADDRESS_ID;
@@ -433,7 +433,7 @@ v_StartTime := clock_timestamp();
 			v_CNTR_ID,
 			v_ADDRESS_LINE_ATTN
 		);
-		
+
 v_EndTime := clock_timestamp();
 select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));

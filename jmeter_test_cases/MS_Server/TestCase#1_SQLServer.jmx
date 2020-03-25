@@ -109,10 +109,14 @@
         <hashTree/>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="MS_SQL_TestCase#1" enabled="true">
           <stringProp name="dataSource">aid</stringProp>
-          <stringProp name="query">DECLARe @aid INTEGER = ROUND(RAND()*100000*1000, 0),
+          <stringProp name="query">---------------TEST Case #1
+--Script Select only script:
+        
+DECLARe @aid INTEGER = ROUND(RAND()*100000*1000, 0),
 		@abalance int
 
-SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;</stringProp>
+SELECT @abalance = abalance FROM pgbench_accounts WHERE aid = @aid;
+</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryType">Prepared Update Statement</stringProp>

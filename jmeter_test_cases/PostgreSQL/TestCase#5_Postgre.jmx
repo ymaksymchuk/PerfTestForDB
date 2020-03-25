@@ -846,7 +846,7 @@
       </ThreadGroup>
       <hashTree>
         <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
-          <boolProp name="autocommit">true</boolProp>
+          <boolProp name="autocommit">false</boolProp>
           <stringProp name="checkQuery"></stringProp>
           <stringProp name="connectionAge">5000</stringProp>
           <stringProp name="dataSource">aid</stringProp>
@@ -856,7 +856,7 @@
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE_TC1}</stringProp>
           <stringProp name="timeout">${MAX_WAIT_CONNECTION}</stringProp>
-          <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs_usr</stringProp>
           <boolProp name="preinit">true</boolProp>
@@ -926,7 +926,7 @@ $$ language plpgsql;</stringProp>
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE_TC2}</stringProp>
           <stringProp name="timeout">${MAX_WAIT_CONNECTION}</stringProp>
-          <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs_usr</stringProp>
           <boolProp name="preinit">true</boolProp>
@@ -1009,7 +1009,7 @@ $$ language plpgsql;
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE_TC3}</stringProp>
           <stringProp name="timeout">${MAX_WAIT_CONNECTION}</stringProp>
-          <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs_usr</stringProp>
           <boolProp name="preinit">true</boolProp>
@@ -1676,7 +1676,7 @@ END$$</stringProp>
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE_TC4}</stringProp>
           <stringProp name="timeout">${MAX_WAIT_CONNECTION}</stringProp>
-          <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs_usr</stringProp>
           <boolProp name="preinit">true</boolProp>

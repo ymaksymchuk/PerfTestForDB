@@ -104,12 +104,12 @@ v_StartTime := clock_timestamp();
 			public.CMS_CASE_FILE CF 
 			INNER JOIN public.CMS_CASE C  ON C.CASE_FILE_ID=CF.CASE_FILE_ID
 			LEFT OUTER JOIN public.CMS_LOAN_TYPE LT  ON CF.LOAN_TYPE_ID=LT.LOAN_TYPE_ID
-			INNER JOIN public.CMS_CASE_TYPE CT  ON CT.CASE_TYPE_ID=C.CASE_TYPE_ID
-			INNER JOIN public.CMS_CASE_STATUS CS  ON C.CASE_ID=CS.CASE_ID AND CS.CASE_STAT_CUR_STAT = 'true'
-			INNER JOIN public.CMS_STATUS_TYPE ST  ON CS.STATUS_ID=ST.STATUS_ID
+			LEFT JOIN public.CMS_CASE_TYPE CT  ON CT.CASE_TYPE_ID=C.CASE_TYPE_ID
+			LEFT JOIN public.CMS_CASE_STATUS CS  ON C.CASE_ID=CS.CASE_ID AND CS.CASE_STAT_CUR_STAT = 'true'
+			LEFT JOIN public.CMS_STATUS_TYPE ST  ON CS.STATUS_ID=ST.STATUS_ID
 			LEFT OUTER JOIN public.CMS_DELAY_CODE DC  ON DC.DELAY_CODE_ID=CS.DELAY_CODE_ID
-			INNER JOIN public.CMS_CLIENT_HISTORY CH   ON CH.CASE_FILE_ID = CF.CASE_FILE_ID AND CH.CLIENT_ROLE_ID=1 AND CH.CLIENT_HIST_CUR_CLIENT = 'true'
-			INNER JOIN public.CMS_CLIENT CLI  ON CLI.CLIENT_ID = CH.CLIENT_ID
+			LEFT JOIN public.CMS_CLIENT_HISTORY CH   ON CH.CASE_FILE_ID = CF.CASE_FILE_ID AND CH.CLIENT_ROLE_ID=1 AND CH.CLIENT_HIST_CUR_CLIENT = 'true'
+			LEFT JOIN public.CMS_CLIENT CLI  ON CLI.CLIENT_ID = CH.CLIENT_ID
 			LEFT OUTER JOIN public.CMS_LEGAL_PORTION LP  ON CLI.LEGAL_PORTION_ID=LP.LEGAL_PORTION_ID
 			LEFT OUTER JOIN public.CMS_REFERRING_SYSTEM REF  ON C.REF_SYS_ID=REF.REF_SYS_ID
 			LEFT OUTER JOIN public.CMS_LOCATION LOC ON C.LOCATION_ID=LOC.LOCATION_ID
@@ -145,7 +145,7 @@ v_StartTime := clock_timestamp();
 		v_VAR5,
 		v_VAR6
 		FROM
-		public.CMS_CASE C 
+		public.CMS_CASE C
 		INNER JOIN public.CMS_CASE_FILE CF  ON C.CASE_FILE_ID=CF.CASE_FILE_ID
 		LEFT OUTER JOIN public.CMS_LOAN_TYPE LT  ON CF.LOAN_TYPE_ID=LT.LOAN_TYPE_ID
 		INNER JOIN public.CMS_OFFICE OFC ON CF.OFFICE_ID=OFC.OFFICE_ID
@@ -169,13 +169,13 @@ v_StartTime := clock_timestamp();
 				v_VAR4,
 				v_VAR5,
 				v_VAR6
-			FROM public.CMS_CLIENT CLI 
+			FROM public.CMS_CLIENT CLI
 			LEFT OUTER JOIN public.CMS_SUPER_CODE SC ON CLI.SUPER_CODE_ID=SC.SUPER_CODE_ID
 			LEFT OUTER JOIN public.CMS_CLIENT_STATUS CS ON CLI.CL_STATUS_ID=CS.CL_STATUS_ID
 			LEFT OUTER JOIN public.CMS_LEGAL_PORTION LP  ON CLI.LEGAL_PORTION_ID=LP.LEGAL_PORTION_ID
 			LEFT OUTER JOIN public.CMS_BILLING_PORTION BP ON CLI.BILLING_PORTION_ID=BP.BILLING_PORTION_ID
 			LEFT OUTER JOIN public.CMS_CLIENT_REFERRING_SYS CR ON CLI.CLIENT_REFERRING_SYS_ID=CR.REFERRING_SYS_ID;
-		ELSE 
+		ELSE
 			SELECT
 				CLI.CLIENT_ID,
 				CLI.CLIENT_NAME,
@@ -204,16 +204,16 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 v_StartTime := clock_timestamp();
 		SELECT
-			CLIENT_ID, 
-			CLIENT_CODE, 
-			CL_STATUS_ID, 
+			CLIENT_ID,
+			CLIENT_CODE,
+			CL_STATUS_ID,
 			IR_ID
 			into
 			v_VAR1,
 			v_VAR4,
 			v_VAR2,
 			v_VAR3
-		FROM public.CMS_CLIENT CLI 
+		FROM public.CMS_CLIENT CLI
 		WHERE CLI.CLIENT_ID = v_CLIENT_ID;
 
 v_EndTime := clock_timestamp();
@@ -226,9 +226,9 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 v_StartTime := clock_timestamp();
 		SELECT cc.CLIENT_CONT_ID, cc.CLIENT_ID, cc.CLIENT_CONT_TYPE_ID, cct.CLIENT_CONT_TYPE_NAME,
 				CONCAT(
-					COALESCE(a.ADDRESS_1_LINE || ', ', ''), 
+					COALESCE(a.ADDRESS_1_LINE || ', ', ''),
 					COALESCE(a.ADDRESS_2_LINE || ', ', ''),
-					COALESCE(a.ADDRESS_CITY || ', ', ''), 
+					COALESCE(a.ADDRESS_CITY || ', ', ''),
 					COALESCE(s.STATE_CODE || ', ', ''),
 					COALESCE(a.ADDRESS_ZIPCODE, '')
 				)
@@ -238,7 +238,7 @@ v_StartTime := clock_timestamp();
 				v_VAR3,
 				v_VAR5,
 				v_VAR4
-		FROM	public.CMS_CLIENT_CONTACT AS cc  
+		FROM	public.CMS_CLIENT_CONTACT AS cc
 			INNER JOIN public.CMS_CLIENT_CONTACT_TYPE cct  ON cc.CLIENT_CONT_TYPE_ID = cct.CLIENT_CONT_TYPE_ID
 			LEFT OUTER JOIN public.CMS_ADDRESS a  ON a.CLIENT_CONT_ID = cc.CLIENT_CONT_ID AND a.ADDRESS_IS_PRIM = 'true'
 			LEFT JOIN public.CMS_STATE s ON s.STATE_ID = a.STATE_ID
@@ -252,11 +252,11 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 -- 	--exec CMSWS_SP_GET_CMS_CASE_INFO_BY_CASENUMBER @OFFICE_CODE=N'AL',@CASE_FILE_NUMB=N'14-003582'
 v_StartTime := clock_timestamp();
 		/* RETURNS A LIST OF ACTIONS FOR THE GIVEN OFFICE/CASE # */
-		SELECT 
-			C.CASE_ID, 
-			C.CASE_FILE_ID, 
-			CF.CASE_FILE_LOAN_NUMB, 
-			CF.CASE_FILE_NUMB, 
+		SELECT
+			C.CASE_ID,
+			C.CASE_FILE_ID,
+			CF.CASE_FILE_LOAN_NUMB,
+			CF.CASE_FILE_NUMB,
 			C.CASE_NUMBER
 			INTO
 			v_VAR1,
@@ -265,7 +265,7 @@ v_StartTime := clock_timestamp();
 			v_VAR5,
 			v_VAR6
 		FROM
-			public.CMS_CASE_FILE CF 
+			public.CMS_CASE_FILE CF
 			INNER JOIN public.CMS_CASE C  ON C.CASE_FILE_ID=CF.CASE_FILE_ID
 			LEFT OUTER JOIN public.CMS_LOAN_TYPE LT  ON CF.LOAN_TYPE_ID=LT.LOAN_TYPE_ID
 			INNER JOIN public.CMS_CASE_TYPE CT  ON CT.CASE_TYPE_ID=C.CASE_TYPE_ID
@@ -291,10 +291,10 @@ v_StartTime := clock_timestamp();
 v_EndTime := clock_timestamp();
 select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
-		
+
 -- 	--exec CMSWS_SP_GET_PROPERTY_ADDRESS @CASE_FILE_ID=2067753
 v_StartTime := clock_timestamp();
-		SELECT 
+		SELECT
 		ADRS.ADDRESS_ID,
 		ADRS.ADDRESS_1_LINE,
 		ADRS.ADDRESS_2_LINE
@@ -303,7 +303,7 @@ v_StartTime := clock_timestamp();
 		v_VAR4,
 		v_VAR5
 		FROM
-		public.CMS_ADDRESS ADRS 
+		public.CMS_ADDRESS ADRS
 		LEFT OUTER JOIN public.CMS_STATE ST  ON ADRS.STATE_ID=ST.STATE_ID
 		LEFT OUTER JOIN public.CMS_COUNTY CNTY ON ADRS.COUNTY_ID=CNTY.COUNTY_ID
 		LEFT OUTER JOIN public.CMS_COUNTRY CNTRY  ON ADRS.CNTR_ID=CNTRY.CNTR_ID
@@ -317,7 +317,7 @@ select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 -- 	--exec CMSWS_SP_GET_ALERTS_ON_ACTION @CASE_ID=3212238
-v_StartTime := clock_timestamp();	
+v_StartTime := clock_timestamp();
 		SELECT
 		BP.BP_ID,
 		BP.BP_NAME
@@ -325,11 +325,11 @@ v_StartTime := clock_timestamp();
 		v_VAR1,
 		v_VAR4
 		FROM
-		public.CMS_BOILER_PLATE_LINK BPL 
+		public.CMS_BOILER_PLATE_LINK BPL
 		INNER JOIN public.CMS_BOILER_PLATE BP  ON BPL.BP_ID=BP.BP_ID
 		WHERE
 		BPL.CASE_ID = v_CASE_ID;
-	
+
 v_EndTime := clock_timestamp();
 select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
@@ -339,7 +339,7 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 	v_cf_id := v_CASE_FILE_ID;
 
 v_StartTime := clock_timestamp();
-	SELECT CASE_FILE_GRP_ID into v_grp_id FROM public.CMS_CASE_FILE_ASSOCIATED 
+	SELECT CASE_FILE_GRP_ID into v_grp_id FROM public.CMS_CASE_FILE_ASSOCIATED
 		WHERE CASE_FILE_ID = v_cf_id;
 
 v_EndTime := clock_timestamp();
@@ -347,10 +347,10 @@ select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 v_StartTime := clock_timestamp();
-	SELECT cfa.CFA_ID, 
-			c.CASE_ID, 
+	SELECT cfa.CFA_ID,
+			c.CASE_ID,
 			cf.CASE_FILE_ID,
-			cf.CASE_FILE_NUMB, 
+			cf.CASE_FILE_NUMB,
 			c.CASE_NUMBER,
 			cf.CASE_FILE_REF
 			into
@@ -360,16 +360,16 @@ v_StartTime := clock_timestamp();
 			v_VAR4
 			v_VAR5,
 			v_VAR6
-	FROM        
+	FROM
 		public.CMS_CASE_FILE_ASSOCIATED AS cfa  INNER JOIN
 	    public.CMS_CASE_FILE AS cf  ON cfa.CASE_FILE_ID = cf.CASE_FILE_ID INNER JOIN
 		  public.CMS_CLIENT_HISTORY AS ch  ON cf.CASE_FILE_ID = ch.CASE_FILE_ID AND ch.CLIENT_HIST_CUR_CLIENT = 'true' AND ch.CLIENT_ROLE_ID = 1 INNER JOIN
-		  public.CMS_CLIENT AS cl  ON ch.CLIENT_ID = cl.CLIENT_ID LEFT OUTER JOIN 
+		  public.CMS_CLIENT AS cl  ON ch.CLIENT_ID = cl.CLIENT_ID LEFT OUTER JOIN
 		  public.CMS_CASE c  INNER JOIN
 		  public.CMS_CASE_STATUS cs  INNER JOIN
 		public.CMS_STATUS_TYPE st on cs.STATUS_ID = st.STATUS_ID
         	    				  ON c.CASE_ID = cs.CASE_ID AND cs.CASE_STAT_CUR_STAT = 'true'
-        	    			  ON cf.CASE_FILE_ID = c.CASE_FILE_ID 
+        	    			  ON cf.CASE_FILE_ID = c.CASE_FILE_ID
 	WHERE     cfa.CASE_FILE_GRP_ID = v_grp_id
 	limit 1;
 
@@ -380,7 +380,7 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 -- 	--exec CMSWS_SP_GET_ACTION_INFO_BY_CASE_ID @CASE_ID=3212238
 v_StartTime := clock_timestamp();
-		SELECT  
+		SELECT
 		C.CASE_ID,
 		C.CASE_FILE_ID,
 		C.CASE_NUMBER,
@@ -394,7 +394,7 @@ v_StartTime := clock_timestamp();
 		v_VAR3,
 		v_VAR5,
 		v_VAR6
-		FROM public.CMS_CASE C 
+		FROM public.CMS_CASE C
 		INNER JOIN public.CMS_CASE_FILE CF ON C.CASE_FILE_ID = CF.CASE_FILE_ID
 		INNER JOIN public.CMS_OFFICE O  ON CF.OFFICE_ID = O.OFFICE_ID
 		INNER JOIN public.CMS_CASE_TYPE CT  ON C.CASE_TYPE_ID=CT.CASE_TYPE_ID
@@ -411,14 +411,14 @@ select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 	--exec CMS_P_MY_LAST_TEN_CASE_UPDATE @who_has=N'Andriy Ruslyakov',@case_file_id=2067753,@case_id=3212238
-		-- get case file number plus case number 
+		-- get case file number plus case number
 v_StartTime := clock_timestamp();
-		SELECT (cf.CASE_FILE_NUMB || ' ' || c.CASE_NUMBER) 
+		SELECT (cf.CASE_FILE_NUMB || ' ' || c.CASE_NUMBER)
 		into v_case
 		FROM 	public.CMS_CASE c
-		INNER JOIN public.CMS_CASE_FILE cf 
+		INNER JOIN public.CMS_CASE_FILE cf
 			 ON c.CASE_FILE_ID = cf.CASE_FILE_ID
-		WHERE     
+		WHERE
 			(c.CASE_ID = v_case_id);
 
 v_EndTime := clock_timestamp();
@@ -426,10 +426,10 @@ select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 v_StartTime := clock_timestamp();
-		UPDATE public.CMS_MY_LAST_TEN_CASE 
+		UPDATE public.CMS_MY_LAST_TEN_CASE
 		SET LOAD_DATE = current_date
-		WHERE 
-			CASE_WHO_HAS = v_who_has AND 
+		WHERE
+			CASE_WHO_HAS = v_who_has AND
 			CASE_FILE_NUMB = v_case;
 
 v_EndTime := clock_timestamp();
@@ -437,26 +437,26 @@ select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 		IF NOT FOUND THEN
-	/*  If no record were update therefore is because it does not exist */    
+	/*  If no record were update therefore is because it does not exist */
 		--IF (@@ROWCOUNT = 0)
 				-- get  counting Case and last oldening loading date
 v_StartTime := clock_timestamp();
-         		SELECT COUNT(CASE_ID), min(LOAD_DATE) 
+         		SELECT COUNT(CASE_ID), min(LOAD_DATE)
 				INTO
 				V_count,
 				v_old_date
-				FROM public.CMS_MY_LAST_TEN_CASE 
+				FROM public.CMS_MY_LAST_TEN_CASE
      			WHERE CASE_WHO_HAS = v_who_has;
 
 				-- deleting last oldening loading date if count > 10
 				IF v_count >= 10 THEN
-					DELETE FROM public.CMS_MY_LAST_TEN_CASE 
-					WHERE 
-						CASE_WHO_HAS = v_who_has AND 
+					DELETE FROM public.CMS_MY_LAST_TEN_CASE
+					WHERE
+						CASE_WHO_HAS = v_who_has AND
 						LOAD_DATE = v_old_date;
 				END IF;
 				-- inserting loading Case
-				INSERT INTO public.CMS_MY_LAST_TEN_CASE (CASE_ID, CASE_FILE_ID, CASE_FILE_NUMB, CASE_WHO_HAS, LOAD_DATE) 
+				INSERT INTO public.CMS_MY_LAST_TEN_CASE (CASE_ID, CASE_FILE_ID, CASE_FILE_NUMB, CASE_WHO_HAS, LOAD_DATE)
 				VALUES (v_case_id, v_case_file_id, v_case, v_who_has, current_date);
 v_EndTime := clock_timestamp();
 select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
@@ -465,7 +465,7 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 	--exec CMSWS_SP_GET_PROPERTY_ADDRESS @CASE_FILE_ID=2067753
 v_StartTime := clock_timestamp();
-		SELECT  
+		SELECT
 		ADRS.ADDRESS_ID,
 		ADRS.ADDRESS_1_LINE,
 		ADRS.ADDRESS_2_LINE,
@@ -476,7 +476,7 @@ v_StartTime := clock_timestamp();
 		v_VAR5,
 		v_VAR6
 		FROM
-		public.CMS_ADDRESS ADRS 
+		public.CMS_ADDRESS ADRS
 		LEFT OUTER JOIN public.CMS_STATE ST  ON ADRS.STATE_ID=ST.STATE_ID
 		LEFT OUTER JOIN public.CMS_COUNTY CNTY  ON ADRS.COUNTY_ID=CNTY.COUNTY_ID
 		LEFT OUTER JOIN public.CMS_COUNTRY CNTRY  ON ADRS.CNTR_ID=CNTRY.CNTR_ID
@@ -488,22 +488,22 @@ v_StartTime := clock_timestamp();
 v_EndTime := clock_timestamp();
 select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
-	
+
 -- 	--exec CMSWS_SP_GET_CMS_CASE_INFO @CASE_ID=3212238
 
 	--exec CMSWS_SP_GET_CMS_ACTIVITIES_BY_CASE_ID @CASE_ID=3212238,@IS_INCLUDE_SUB_ACTIVITIES=1,@IS_INCLUDE_INACTIVE=1
 v_StartTime := clock_timestamp();
-	SELECT 
+	SELECT
 			a.ACT_ID,
 			a.CASE_ID,
 			a.ACT_NAME,
 			SPT.SUB_PROCESS_TEMPLATE_NAME
-			into 
+			into
 			v_ACT_ID,
 			v_VAR1,
 			v_VAR4,
 			v_VAR5
-		FROM public.CMS_ACTIVITY a 
+		FROM public.CMS_ACTIVITY a
 			INNER JOIN public.CMS_ACTIVITY_TEMPLATE atmpl ON a.ACT_TMPL_ID = atmpl.ACT_TMPL_ID
 			INNER JOIN public.CMS_MS_TEMPLATE_NEW m ON atmpl.MS_ID = m.MS_ID
 			LEFT JOIN public.CMS_CASE_SUB_PROCESS  sp ON sp.CASE_SUB_PROCESS_ID = a.CASE_SUB_PROCESS_ID
@@ -539,7 +539,7 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 v_StartTime := clock_timestamp();
 		select nextval('public.sq_comment_serial') into v_COMMENT_ID;
-		INSERT INTO public.CMS_COMMENT(COMMENT_ID, CMNT_TYPE_ID,CASE_ID,COMMENT_TEXT,COMMENT_USR_ID,COMMENT_USR_NAME,COMMENT_DATE,CASE_SUB_PROCESS_ID) 
+		INSERT INTO public.CMS_COMMENT(COMMENT_ID, CMNT_TYPE_ID,CASE_ID,COMMENT_TEXT,COMMENT_USR_ID,COMMENT_USR_NAME,COMMENT_DATE,CASE_SUB_PROCESS_ID)
 		  VALUES(v_COMMENT_ID, 6,v_CASE_ID,'@COMMENTTEXT',v_USERID,v_USERNAME,current_timestamp,1);
 
 v_EndTime := clock_timestamp();
@@ -548,7 +548,7 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 	-- run twice for next activity
 v_StartTime := clock_timestamp();
-			SELECT 
+			SELECT
 			a.ACT_ID,
 			a.CASE_ID,
 			a.ACT_NAME,
@@ -558,7 +558,7 @@ v_StartTime := clock_timestamp();
 			v_VAR1,
 			v_VAR4,
 			v_VAR5
-		FROM public.CMS_ACTIVITY a 
+		FROM public.CMS_ACTIVITY a
 			INNER JOIN public.CMS_ACTIVITY_TEMPLATE atmpl  ON a.ACT_TMPL_ID = atmpl.ACT_TMPL_ID
 			INNER JOIN public.CMS_MS_TEMPLATE_NEW m  ON atmpl.MS_ID = m.MS_ID
 			LEFT JOIN public.CMS_CASE_SUB_PROCESS  sp ON sp.CASE_SUB_PROCESS_ID = a.CASE_SUB_PROCESS_ID
@@ -594,7 +594,7 @@ raise notice '  --- v_Diff = %',  cast(v_Diff as character varying(20));
 
 v_StartTime := clock_timestamp();
 		select nextval('public.sq_comment_serial') into v_COMMENT_ID;
-		INSERT INTO public.CMS_COMMENT(COMMENT_ID, CMNT_TYPE_ID,CASE_ID,COMMENT_TEXT,COMMENT_USR_ID,COMMENT_USR_NAME,COMMENT_DATE,CASE_SUB_PROCESS_ID) 
+		INSERT INTO public.CMS_COMMENT(COMMENT_ID, CMNT_TYPE_ID,CASE_ID,COMMENT_TEXT,COMMENT_USR_ID,COMMENT_USR_NAME,COMMENT_DATE,CASE_SUB_PROCESS_ID)
 		  VALUES(v_COMMENT_ID, 6,v_CASE_ID,'@COMMENTTEXT',v_USERID,v_USERNAME,current_timestamp,1);
 
 v_EndTime := clock_timestamp();

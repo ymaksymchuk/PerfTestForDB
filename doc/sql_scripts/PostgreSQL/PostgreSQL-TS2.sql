@@ -16,8 +16,6 @@ begin
 	SELECT abalance into p_abalance FROM pgbench_accounts WHERE aid = p_aid;
 	UPDATE pgbench_tellers SET tbalance = tbalance + p_delta WHERE tid = p_tid;
 	UPDATE pgbench_branches SET bbalance = bbalance + p_delta WHERE bid = p_bid;
-	INSERT INTO pgbench_history (tid, bid, aid, delta, mtime) VALUES (p_tid, p_bid, p_aid, p_delta, CURRENT_TIMESTAMP);	
-
+	INSERT INTO pgbench_history (tid, bid, aid, delta, mtime) VALUES (p_tid, p_bid, p_aid, p_delta, CURRENT_TIMESTAMP);
 end
 $$ language plpgsql;
-
