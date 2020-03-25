@@ -79,7 +79,7 @@
       </ThreadGroup>
       <hashTree>
         <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
-          <boolProp name="autocommit">true</boolProp>
+          <boolProp name="autocommit">false</boolProp>
           <stringProp name="checkQuery"></stringProp>
           <stringProp name="connectionAge">5000</stringProp>
           <stringProp name="dataSource">aid</stringProp>
@@ -89,7 +89,7 @@
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE}</stringProp>
           <stringProp name="timeout">${MAX_WAIT_CONNECTIONS}</stringProp>
-          <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs_usr</stringProp>
           <boolProp name="preinit">true</boolProp>
@@ -118,7 +118,7 @@ begin
 	UPDATE pgbench_tellers SET tbalance = tbalance + p_delta WHERE tid = p_tid;
 	UPDATE pgbench_branches SET bbalance = bbalance + p_delta WHERE bid = p_bid;
 	INSERT INTO pgbench_history (tid, bid, aid, delta, mtime) VALUES (p_tid, p_bid, p_aid, p_delta, CURRENT_TIMESTAMP);	
-commit;
+	COMMIT;
 end
 $$ language plpgsql;
 </stringProp>

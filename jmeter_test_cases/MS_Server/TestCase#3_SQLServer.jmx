@@ -84,7 +84,7 @@
       </ThreadGroup>
       <hashTree>
         <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
-          <boolProp name="autocommit">true</boolProp>
+          <boolProp name="autocommit">false</boolProp>
           <stringProp name="checkQuery"></stringProp>
           <stringProp name="connectionAge">5000</stringProp>
           <stringProp name="dataSource">pool</stringProp>
@@ -94,7 +94,7 @@
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE}</stringProp>
           <stringProp name="timeout">${MAX_WAIT_CONNECTION}</stringProp>
-          <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs</stringProp>
           <boolProp name="preinit">true</boolProp>
@@ -405,9 +405,9 @@ AND (ISNULL(cli.SUPER_CODE_ID, -1) &lt;&gt; 3363 OR OFC.OFFICE_CODE NOT IN (&apo
 		WHERE 
 			CASE_WHO_HAS = @who_has AND 
 			CASE_FILE_NUMB = @case
-
+			
 	/*  If no record were update therefore is because it does not exist */    
-		IF (@@ROWCOUNT = 0)
+		IF (@@ROWCOUNT = 0) 
 			BEGIN
 				-- get  counting Case and last oldening loading date
          		SELECT @count = COUNT(CASE_ID), @old_date = min(LOAD_DATE) FROM dbo.CMS_MY_LAST_TEN_CASE (NOLOCK)

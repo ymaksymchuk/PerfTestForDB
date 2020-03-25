@@ -79,7 +79,7 @@
       </ThreadGroup>
       <hashTree>
         <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
-          <boolProp name="autocommit">true</boolProp>
+          <boolProp name="autocommit">false</boolProp>
           <stringProp name="checkQuery"></stringProp>
           <stringProp name="connectionAge">5000</stringProp>
           <stringProp name="dataSource">aid</stringProp>
@@ -89,7 +89,7 @@
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE}</stringProp>
           <stringProp name="timeout">${MAX_WAIT_CONNECTION}</stringProp>
-          <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs_usr</stringProp>
           <boolProp name="preinit">true</boolProp>
@@ -262,7 +262,7 @@ raise notice &apos;v_CASE_TMPL_ID = %&apos;,  cast(v_CASE_TMPL_ID as character v
 			v_CASE_TYPE_ID,
 			v_LOCATION_ID,
 			v_BK_CHAPTER_ID,
-			v_CASE_TMPL_ID,
+			COALESCE(v_CASE_TMPL_ID, 42),
 			v_CASE_FILE_RECEIVED::timestamp without time zone,
 			v_CASE_STARTED::timestamp without time zone,
 			v_CASE_WHO_HAS,
@@ -540,6 +540,9 @@ select extract(second from (v_EndTime - v_StartTime)) into v_Diff;
 raise notice &apos;  --- v_Diff = %&apos;,  cast(v_Diff as character varying(20));
 
 	raise notice &apos;ADDRESS inserted: %&apos;,  cast(v_ADDRESS_ID as character varying(20));
+
+COMMIT;
+
 END$$;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -1279,6 +1282,43 @@ END$$;</stringProp>
             </value>
           </objProp>
           <stringProp name="filename">~/TEST_CASE_4/SimpleDataWriter.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>

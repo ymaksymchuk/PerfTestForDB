@@ -89,7 +89,7 @@
           <stringProp name="password">Welc0me!</stringProp>
           <stringProp name="poolMax">${POOL_SIZE}</stringProp>
           <stringProp name="timeout">${MAX_WAIT_CONNECTIONS}</stringProp>
-          <stringProp name="transactionIsolation">TRANSACTION_READ_COMMITTED</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <stringProp name="trimInterval">60000</stringProp>
           <stringProp name="username">cmnbs_usr</stringProp>
           <boolProp name="preinit">true</boolProp>
@@ -101,7 +101,6 @@
           <stringProp name="dataSource">aid</stringProp>
           <stringProp name="query">--Script Select only script:    
 --scaling factor: 1000    
-
 do $$
 	declare p_aid int := round(random()*100000000); 
 	declare p_abalance int;
